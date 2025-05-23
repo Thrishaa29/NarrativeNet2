@@ -1,0 +1,8 @@
+streamlit
+transformers
+torch
+pyttsx3
+requests
+huggingface_hub
+openai>=1.0.0
+python-dotenv
