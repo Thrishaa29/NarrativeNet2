@@ -15,9 +15,8 @@ st.write("Token loaded:", bool(hf_token))
 
 # Initialize Nebius client
 client = InferenceClient(
-    model="microsoft/phi-2",  # Replace with actual model name you're using
-    provider="nebius",
-    api_key=hf_token,
+    model="microsoft/phi-2",  # or phi-1_5, or other supported model
+    token=hf_token
 )
 
 # Inference example
