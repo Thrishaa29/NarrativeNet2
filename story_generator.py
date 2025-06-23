@@ -7,16 +7,24 @@ from huggingface_hub import InferenceClient
 import streamlit as st
 from huggingface_hub import InferenceClient
 
-# ✅ Load Hugging Face API key from Streamlit Secrets
+# Load Hugging Face API Key from Streamlit Secrets
 hf_token = st.secrets["HF_API_KEY"]
 
-# ✅ Initialize Hugging Face Nebius Inference Client
+# Show if token is loaded (for debug)
+st.write("Token loaded:", bool(hf_token))
+
+# Initialize Nebius client
 client = InferenceClient(
-    model="microsoft/phi-2",
+    model="microsoft/phi-2",  # Replace with actual model name you're using
     provider="nebius",
     api_key=hf_token,
 )
-st.write("Token loaded:", bool(hf_token))
+
+# Inference example
+prompt = "Once upon a time in a magical forest,"
+response = client.text_generation(prompt, max_new_tokens=50)
+st.write("Generated Text:", response)
+
 
 
 @st.cache_data
