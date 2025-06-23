@@ -16,6 +16,8 @@ client = InferenceClient(
     provider="nebius",
     api_key=hf_token,
 )
+st.write("Token loaded:", bool(hf_token))
+
 
 @st.cache_data
 def generate_novel_cached(genre, user_prompt="", num_chapters=3):
