@@ -12,6 +12,7 @@ hf_token = st.secrets["HF_API_KEY"]
 
 # ✅ Initialize Hugging Face Nebius Inference Client
 client = InferenceClient(
+    model="microsoft/phi-2",
     provider="nebius",
     api_key=hf_token,
 )
