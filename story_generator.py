@@ -4,25 +4,19 @@ from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 
 # ✅ Load your Hugging Face key from .env
-import streamlit as st
 from huggingface_hub import InferenceClient
+import streamlit as st
 
-# Load Hugging Face API Key from Streamlit Secrets
 hf_token = st.secrets["HF_API_KEY"]
 
-# Show if token is loaded (for debug)
-st.write("Token loaded:", bool(hf_token))
-
-# Initialize Nebius client
 client = InferenceClient(
-    model="microsoft/phi-2",  # or phi-1_5, or other supported model
+    model="microsoft/phi-2",  # Or try mistralai/Mistral-7B-Instruct-v0.1 if phi gives trouble
     token=hf_token
 )
 
-# Inference example
-prompt = "Once upon a time in a magical forest,"
-response = client.text_generation(prompt, max_new_tokens=50)
-st.write("Generated Text:", response)
+prompt = "Once upon a time..."
+response = client.text_generation(prompt=prompt, max_new_tokens=100)
+st.write(response)
 
 
 
