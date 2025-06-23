@@ -9,21 +9,22 @@ import streamlit as st
 
 hf_token = st.secrets["HF_API_KEY"]
 
-# ✅ Specify a supported model
+# ✅ Use a supported model (tested)
 client = InferenceClient(
-    model="microsoft/phi-2",  # You can also try: mistralai/Mistral-7B-Instruct-v0.1
+    model="mistralai/Mistral-7B-Instruct-v0.1",
     token=hf_token
 )
 
-prompt = "Once upon a time in a magical forest..."
+# Just for test/debug
+prompt = "Once upon a time in a forest full of talking animals,"
 response = client.text_generation(
     prompt=prompt,
     max_new_tokens=100,
     temperature=0.7
 )
 
-# Optionally return or print response
-print(response)
+st.write(response)
+
 
 
 
